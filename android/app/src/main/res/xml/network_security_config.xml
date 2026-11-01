@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Allows cleartext (plain HTTP) traffic to local development IPs.
+  Covers the entire 192.168.x.x private range so any local IP
+  the Mac gets assigned will work without config changes.
+  Android 9+ blocks HTTP by default — this file is required.
+-->
+<network-security-config>
+    <!-- Entire 192.168.x.x private subnet — covers any local WiFi IP -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">192.168.0.0</domain>
+        <domain includeSubdomains="true">192.168.1.0</domain>
+        <domain includeSubdomains="true">192.168.2.0</domain>
+        <domain includeSubdomains="true">192.168.29.0</domain>
+        <domain includeSubdomains="true">192.168.43.0</domain>
+        <domain includeSubdomains="true">192.168.100.0</domain>
+    </domain-config>
+    <!-- Android emulator loopback -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">10.0.2.2</domain>
+    </domain-config>
+    <!-- USB tethering range -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">192.0.0.2</domain>
+    </domain-config>
+</network-security-config>
